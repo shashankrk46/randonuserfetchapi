@@ -1,15 +1,27 @@
 const randonUser= new RandomUser();
+const ui=new UI();
+ 
+const searchProfile=document.getElementById('profileDisplay');
 
-const searchProfile=document.getElementById('searchProfile');
+        document.getElementById('next').addEventListener('click',nextProfile);
+        
+        // next profile display
+        function nextProfile(){
+          randonUser.getRandon()
+  .then(data=>{
+    console.log(data.results);
+    ui.sketch(data.results);
+  })
+  .catch(err=>console.log(err));
+}
 
-searchProfile.addEventListener('keyup',(e)=>{
-    const userText=e.target.value;
+// document.addEventListener('DOMContentLoaded',getRandon);
 
-    if(userText !==''){
-      randonUser.getRandon(userText)
-      .then(data=>{
-          console.log(data)
-
-      })
-    }
-})
+// function getRandon(){
+// randonUser.getRandon()
+//   .then(results=>{
+//     console.log(results);
+//     ui.sketch(results);
+//   })
+//   .catch(err=>console.log(err));
+// }
